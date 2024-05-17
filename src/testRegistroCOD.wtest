@@ -1,0 +1,40 @@
+import registroAbatidos.*
+describe"tests Registro de abatidos por día en el Call of Duty"{
+	test "algunDiaAbatio(cantidad): indica si el registro incluye al menos un día en el que se abatió, exactamente, la cantidad indicada." {
+	
+		assert.that(registroAbatidos.algunDiaAbatio(49))
+		assert.notThat(registroAbatidos.algunDiaAbatio(52))
+	
+	}
+	test "maximoValorDeAbatidos(): el valor más alto de abatidos."{
+		assert.equals(62,registroAbatidos.maximoValorDeAbatidos())
+	}
+	test"valoresDeAbatidosPares(): los valores de abatidos del registro que son valores pares."{
+		assert.equals([18,62],registroAbatidos.valoresDeAbatidosPares())
+	}
+	test"abatidosEsAcotada(n1,n2): indica si en el registro, la cantidad de abatidos se encuentra entre los valores indicados."{
+		assert.that(registroAbatidos.abatidosEsAcotada(10,100))
+		assert.notThat(registroAbatidos.abatidosEsAcotada(20,100))
+	}
+	test"abatidosSumando(cantidad): la lista de valores que resulta de sumar el valor indicado en 'cantidad' a cada valor de abatidos del registro."{
+		assert.equals([48,23,54,67,38,44],registroAbatidos.abatidosSumando(5))
+	}
+	test"totalAbatidos(): el total de abatidos por el jugador."{
+		assert.equals(244,registroAbatidos.totalAbatidos())
+	}
+	test"ultimoValorDeAbatidos(): el último valor registrado."{
+		assert.equals(39,registroAbatidos.ultimoValorDeAbatidos())
+	}
+	test"cantidadAbatidosMayorALaPrimera(): la cantidad de valores de abatidos diaria que superan a la cantidad indicada para el primer día del registro."{
+		assert.equals(2,registroAbatidos.cantidadAbatidosMayorALaPrimera())
+	}
+	test"algunDiaAbatioMasDe(cantidad): indica si algún día de que se tiene registro, la cantidad de abatidos es mayor al valor indicado."{
+		assert.that(registroAbatidos.algunDiaAbatioMasDe(50))
+	}
+	test"todosLosDiasAbatioMasDe(cantidad): indica si todos los días de que se tiene registro, la cantidad de abatidos es mayor al valor indicado."{
+		assert.notThat(registroAbatidos.todosLosDiasAbatioMasDe(30))
+	}
+	test"esCrack(): indica verdadero si en todos los días de los que se tiene registro, el valor de abatidos siempre fue aumentando (mayor valor día a día)."{
+		assert.notThat(registroAbatidos.esCrack())
+	}
+}

@@ -1,4 +1,4 @@
-object registroAbatidosCOD {
+object registroAbatidos {
 	const registro = [[43,18,49,62,33,39],[20221231,20230101,20230105,20230106,20230107,20230108]]
 	
 	method cantidadDeDiasRegistrados(){
@@ -38,13 +38,13 @@ object registroAbatidosCOD {
 		return registro.get(0).map({reg => reg + cantidad})
 	}
 	method abatidosEsAcotada(n1,n2){
-		return registro.get(0).filter({reg => reg.between(n1,n2)})
+		return registro.get(0).all({reg => reg.between(n1,n2)})
 	}
 	method algunDiaAbatioMasDe(cantidad){
 		return registro.get(0).any({reg => reg > cantidad})
 	}
 	method todosLosDiasAbatioMasDe(cantidad){
-		return registro.get(0).sum() > cantidad
+		return registro.get(0).all({reg => reg > cantidad}) 
 	}
 	method cantidadAbatidosMayorALaPrimera(){
 		return registro.get(0).count({reg => reg > registro.get(0).get(0) })
